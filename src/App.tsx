@@ -1,4 +1,5 @@
 import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
+
 import NavBar from "./components/NavBar";
 
 function App() {
