@@ -2,22 +2,31 @@ import { Button, Menu, Portal } from "@chakra-ui/react";
 import { HiArrowDown } from "react-icons/hi";
 import usePlatforms from "../hooks/usePlatforms";
 
-const PlatformSelector = () => {
+export interface Props {
+  onSelectPlatform: (platform: Platform) => void;
+  selectedPlatform: Platform | null;
+}
+
+const PlatformSelector = ({ onSelectPlatform, selectedPlatform }) => {
   const { data, error } = usePlatforms();
   if (error) return null;
   return (
     <Menu.Root>
       <Menu.Trigger asChild>
         <Button variant="outline" size="sm">
-          Platform <HiArrowDown />
+          {selectedPlatform?.name || "Platforms"} <HiArrowDown />
         </Button>
       </Menu.Trigger>
       <Portal>
         <Menu.Positioner>
           <Menu.Content>
-            <Menu.ItemIndicator />
             {data.map((platform) => (
-              <Menu.Item key={platform.id}>{platform.name}</Menu.Item>
+              <Menu.Item
+                onClick={() => onSelectPlatform(platform)}
+                key={platform.id}
+              >
+                {platform.name}
+              </Menu.Item>
             ))}
           </Menu.Content>
         </Menu.Positioner>
