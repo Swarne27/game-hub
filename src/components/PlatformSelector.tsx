@@ -1,13 +1,14 @@
 import { Button, Menu, Portal } from "@chakra-ui/react";
 import { HiArrowDown } from "react-icons/hi";
 import usePlatforms from "../hooks/usePlatforms";
+import type { Platform } from "@/hooks/useGames";
 
 export interface Props {
   onSelectPlatform: (platform: Platform) => void;
   selectedPlatform: Platform | null;
 }
 
-const PlatformSelector = ({ onSelectPlatform, selectedPlatform }) => {
+const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   const { data, error } = usePlatforms();
   if (error) return null;
   return (
