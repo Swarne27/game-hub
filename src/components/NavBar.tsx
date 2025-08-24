@@ -4,16 +4,18 @@ import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 import { ColorModeButton } from "@/components/ui/color-mode";
 import SearchInput from "./SearchInput";
 import logo from "../assets/logo.webp";
-
-function NavBar({ children }: { children: React.ReactNode }) {
+interface Props {
+  onSearch: (searchText: string) => void;
+}
+function NavBar({ onSearch }: Props) {
+  //{ children }: { children: React.ReactNode }
   return (
     <HStack padding="10px">
       <Image src={logo} boxSize="60px" />
-      <SearchInput />
+      <SearchInput onSearch={onSearch} />
       <ChakraProvider value={defaultSystem}>
-        <ColorModeProvider>{children}</ColorModeProvider>
+        <ColorModeProvider></ColorModeProvider>
         <ColorModeButton />
-        {children}
       </ChakraProvider>
     </HStack>
   );
