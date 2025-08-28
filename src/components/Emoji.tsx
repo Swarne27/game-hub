@@ -2,7 +2,7 @@ import bullsEye from "../assets/bulls-eye.webp";
 import thumbsUp from "../assets/thumbs-up.webp";
 import meh from "../assets/meh.webp";
 import { Image } from "@chakra-ui/react";
-
+import type { ImageProps } from "@chakra-ui/react";
 export interface Props {
   rating: number;
 }
